@@ -10,16 +10,38 @@
 
     <script type="text/javascript">
       var yourVlSpec = {
-        $schema: 'https://vega.github.io/schema/vega-lite/v6.json',
-        description: 'A simple bar chart with embedded data.',
-        data: {
-          url: "https://raw.githubusercontent.com/linnorma/mmmoosic/refs/heads/main/top_songs.csv"
-        },
-        mark: 'bar',
-        encoding: {
-          x: {field: 'a', type: 'ordinal'},
-          y: {field: 'b', type: 'quantitative'},
-        },
+        "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+        "data": {"url": "https://raw.githubusercontent.com/linnorma/mmmoosic/refs/heads/main/top_songs.csv"},
+        "title": "Duration vs. BPM of 2010's Billboard top songs",
+        "params": [
+          {
+          "name": "YearSelect",
+          "select": {"type": "point", "fields": ["year"]},
+          "bind": {
+        "input": "select",
+        "options": [null, "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2018", "2019"],
+        "labels": ["Show All", "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2018", "2019"],
+        "name": "Select Year:"
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": {"param": "YearSelect"}
+    }
+  ],
+  "mark": "point",
+  "encoding": {
+    "opacity": {
+      "value": 0.5
+    },
+    "tooltip": [
+      {"field": "title", "type": "nominal"},
+      {"field": "artist", "type": "nominal"}
+    ],
+    "x": {"field": "dur", "type": "quantitative", "title": "duration (seconds)", "scale": {"zero": false}},
+    "y": {"field": "bpm", "type": "quantitative", "scale": {"zero": false}}
+  }
       };
       vegaEmbed('#vis', yourVlSpec);
     </script>
