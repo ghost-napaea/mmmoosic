@@ -68,5 +68,20 @@
 };
     vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
   </script>
+
+  <p></p>
+  <p>Caveat: I chose to do this project alone because I knew my workflow would be atrocious. You may have noticed that this page is not actually hosted from the shared class GitLab. That is because I began very last-minute, and could not figure out why the provided links on Gradescope and the course website both gave me 404 errors. I changed my personal GitHub username to no longer resemble my real name or UW netid. The repository storing my project is public, and has the same name that I chose in my team sign-up form. I hope this is somewhat acceptable.
+</p>
+  <p></p>
+  <p>Motivation: Music is fun. I’m just having fun with this one. I wanted to see if the duration of a song had any correlation to its tempo, because maybe shorter songs would have a tendency to cram in “more song per song.” The answer is seemingly no. Even so, my visualization can still be used to see how distributions of both those variables changed over time, or for finding songs that fit a preferred tempo, length, or release year. I also explored other relationships in the data, but I didn’t really find interesting patterns, besides mild evidence that the durations of songs slightly decreased over the years. I considered filtering data by artist or genre, but those categories were too specific and numerous to work with, at least in the case of my specific dataset.
+</p>
+  <p></p>
+  <p>References: The data set I used contains approximately 600 Billboard top songs between the years 2010 and 2019. It can be found here: https://www.datacamp.com/datalab/datasets/dataset-python-spotify-music. “Million Years Ago” by Adele was missing its BPM value, which I had to manually add in. It had been arbitrarily set to zero, which made my graph look weird. I was inspired by this example visualization to use the tooltip feature: https://vega.github.io/vega-lite/examples/param_search_input.html
+</p>
+  <p></p>
+  <p>Design: I used a scatter plot with song duration on the x-axis, and bpm on the y-axis. There is a lot of over-plotting when no filter is applied, so I set circle opacity to 0.5 to make it more obvious where data points overlap. By hovering over a datapoint, you can display the title and artist of that song. (I believe some points might not be accessible by the pointer due to aforementioned over-plotting, and I am simply resigned to this.) I chose to implement this because I think it’s cool to see which songs are outliers. It also provides an intuitive way to understand BPM by allowing a user to connect an abstract number to songs they already know the feeling of. Without the interactive element, I would not be able to make all the titles and artists legible on one visualization. I made the displayed year customizable by a drop-down menu (I hate sliders) because there are too many years to effectively encode through colors.
+</p>
+  <p>Process: As previously mentioned, I was very late to begin working on this visualization. I had not been keeping up with course content very well, and scrounged on the internet for information on how to publish my HTML webpage. That took about one hour. Messing around in Vega-Lite before settling on the final code was another 2 hours.
+</p>
 </body>
 </html>
